@@ -1,0 +1,1 @@
+"""Constructor standings aggregation."""

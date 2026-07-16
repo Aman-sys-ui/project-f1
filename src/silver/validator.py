@@ -1,0 +1,1 @@
+"""Silver-level validation coordinator."""

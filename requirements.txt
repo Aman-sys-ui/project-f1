@@ -1,0 +1,34 @@
+# F1 Lakehouse Platform — Python dependencies
+#
+# Runtime dependencies (provided by Databricks Runtime on the cluster):
+#   pyspark, delta-spark — do NOT pin here as DBR manages these.
+#
+# Local development and testing dependencies:
+#   Install with:  pip install -r requirements.txt
+#
+# Databricks Runtime version assumed: DBR 13.3 LTS (Spark 3.4, Delta 2.4, Python 3.10)
+
+# ---------------------------------------------------------------------------
+# Testing
+# ---------------------------------------------------------------------------
+pytest>=7.4.0
+pytest-cov>=4.1.0            # Coverage reporting
+pytest-mock>=3.11.1          # Cleaner mock fixtures
+
+# ---------------------------------------------------------------------------
+# Local PySpark (for unit tests only — not installed on the cluster)
+# ---------------------------------------------------------------------------
+pyspark==3.4.1               # Must match DBR Spark version
+delta-spark==2.4.0           # Must match DBR Delta version
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+pyyaml>=6.0.1                # Parse configs/entities.yml during metadata setup
+
+# ---------------------------------------------------------------------------
+# Code quality (CI only — not required in Databricks)
+# ---------------------------------------------------------------------------
+black>=23.7.0                # Code formatter
+ruff>=0.0.285                # Fast linter (replaces flake8 + isort)
+mypy>=1.5.1                  # Static type checking
