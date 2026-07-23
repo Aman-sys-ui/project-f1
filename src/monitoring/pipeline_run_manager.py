@@ -123,7 +123,7 @@ def complete_run(
         f"""
         UPDATE {PIPELINE_RUNS_TABLE}
         SET
-            status = '{SUCCESS}',
+            status = '{status}',
             end_time = TIMESTAMP('{end_time}'),
             duration_ms = {duration_ms},
             records_processed = {records_processed},
