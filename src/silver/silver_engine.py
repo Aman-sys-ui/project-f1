@@ -6,6 +6,7 @@ from src.common.config_loader import get_silver_config
 from src.common.constants import CATALOG_NAME
 from src.common.metadata import add_silver_metadata
 from src.silver.transformation_registry import TRANSFORMATION_REGISTRY
+from src.silver.validator import validate_silver_output
 
 
 logger = logging.getLogger(__name__)
@@ -73,6 +74,13 @@ class SilverEngine:
             ]
 
             silver_df = transformation(bronze_df)
+
+            logger.info(
+                "Validating Silver output for entity: %s",
+                entity_name,
+            )
+
+            validate_silver_output(entity_name, silver_df)
 
             silver_df = add_silver_metadata(
                 silver_df,
